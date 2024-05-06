@@ -3,7 +3,7 @@
 
 
     <form id="testimonialForm" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+        {% comment %} {% csrf_token %} {% endcomment %}
         {% comment %} <div class="form-group">
             <label for="content">Contenu :</label>
             <textarea class="form-control" id="content" name="content" rows="3" placeholder="Entrez le contenu du témoignage"></textarea>

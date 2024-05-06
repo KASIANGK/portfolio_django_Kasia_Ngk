@@ -10,6 +10,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import AboutInfo
 from app_testimonials.models import Testimonial 
+from app_testimonials.forms import TestimonialForm
 from app_skills.models import Skill 
 from app_services.models import Service 
 from .forms import AboutInfoForm
@@ -27,11 +28,7 @@ def about(request):
     about_info = AboutInfo.objects.first()
     return render(request, 'about.html', {'about_info': about_info})
 
-# def home(request):
-#     context = {
-#         'isLoggedIn': request.user.is_authenticated
-#     }
-#     return render(request, 'home.html', context)
+
 def home(request):
     about_info = AboutInfo.objects.first()  
     testimonials = Testimonial.objects.all() 
@@ -57,11 +54,33 @@ def home(request):
 
 #     return render(request, 'home.html', context)
 
+
+
 def homeback(request):
+    data_saved = False
+    x = 'lol'
+    
+    if request.method == 'POST':
+        form = TestimonialForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            data_saved = True 
+            return redirect('homeback')  # Rediriger vers la même page après avoir ajouté un témoignage
+    else:
+        form = TestimonialForm()
+    
     context = {
+        'form': form,
+        'data_saved': data_saved,
+        'x': x,
         'isLoggedIn': request.user.is_authenticated
     }
     return render(request, 'homeback.html', context)
+# def homeback(request):
+#     context = {
+#         'isLoggedIn': request.user.is_authenticated
+#     }
+#     return render(request, 'homeback.html', context)
 
 def login(request):
     if request.method == 'POST':

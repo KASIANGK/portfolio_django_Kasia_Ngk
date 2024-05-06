@@ -9,16 +9,16 @@
         </div>
 
 
-        <form method="post">
+        {% comment %} <form method="post">
             {% csrf_token %}
             {{ form.as_p}}
-        </form>
+        </form> {% endcomment %}
         
         <form id="servicesForm" method="post">
             {% csrf_token %}
-            {{ form.as_p}}
-            {% comment %} 
-            <div class="row">
+            {{ form.as_p}} 
+            
+            {% comment %} <div class="row">
                 <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}">
                     <div class="icon"><i class="bi bi-briefcase"></i></div>
                     <h4 class="title">
@@ -28,6 +28,9 @@
                         <textarea name="description" placeholder="Description du service"></textarea>
                     </p>
                 </div>
+            </div> {% endcomment %}
+
+                {% comment %} 
                 <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}">
                     <div class="icon"><i class="bi bi-card-checklist"></i></div>
                     <h4 class="title">
@@ -76,7 +79,7 @@
                     </p>
                 </div> {% endcomment %}
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 30px;">Enregistrer</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>
     </div>
 </section>

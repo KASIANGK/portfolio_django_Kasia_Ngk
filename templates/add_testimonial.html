@@ -1,0 +1,45 @@
+{% load static %}
+
+
+
+    <form id="testimonialForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} <div class="form-group">
+            <label for="content">Contenu :</label>
+            <textarea class="form-control" id="content" name="content" rows="3" placeholder="Entrez le contenu du témoignage"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="author">Auteur :</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="Entrez l'auteur du témoignage">
+        </div>
+        <div class="form-group">
+            <label for="designation">Designation :</label>
+            <input type="text" class="form-control" id="designation" name="designation" placeholder="Entrez la designation de l'auteur">
+        </div>
+        <div class="form-group">
+            <label for="image">Image (facultatif) :</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div> {% endcomment %}
+        {{x}}
+        {{form}}
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+    <script>
+        $(document).ready(function() {
+            $('#testimonialForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: formData,
+                    success: function(response) {
+                        alert('OH YEAH BG, DATA SAVED SUCCESSFULLY !');
+                    },
+                    error: function() {
+                        alert('Oh noooo, an error occurred while submitting the form :( ');
+                    }
+                });
+            });
+        });
+    </script>

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    
+    <form id="login-form" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" autocomplete="username">
+        <input type="password" name="password" placeholder="Password" autocomplete="current-password">
+
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('#login-form').submit(function(event) {
+                event.preventDefault(); 
+                
+                var formData = $(this).serialize();
+
+                // requete AJAX pour soumettre le formulaire
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: formData,
+                    success: function(response) {
+                        console.log('Response received:', response);
+
+                        if (response.success) {
+                            window.location.href = "{% url 'homeback' %}";
+                            console.log('Login OK');
+                        } else {
+                            console.log('Login FAIL');
+                        }
+                    },
+                    error: function(xhr, errmsg, err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+    {% comment %} <script>
+        $(document).ready(function() {
+            $('#login-form').submit(function(event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: formData,
+                    success: function(response) {
+                        console.log('Response received:', response);
+
+                        if (response.success) {
+                            window.location.href = "{% url 'home' %}";
+
+                            console.log('Login successful. Redirecting to homeback.html.');
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function(xhr, errmsg, err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script> {% endcomment %}
+
+
+{% endblock %}
+

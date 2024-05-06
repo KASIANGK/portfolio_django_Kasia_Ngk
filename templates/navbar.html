@@ -1,0 +1,140 @@
+{% comment %} {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i> 
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img id="profile-img" src="{% static 'profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light" id="username"><a href="index.html">Alex Smith</a></h1>
+        <div id="social-links" class="social-links mt-3 text-center">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
+          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+
+          <li id="login-btn-li">
+            <a href="#" id="login-btn" class="nav-link scrollto"><i class="bx bx-log-in"></i> <span>{% if isLoggedIn %}Log Out{% else %}Log In{% endif %}</span></a>
+          </li>
+          {% if isLoggedIn %}
+            <li class="extra-links">
+              <a href="#hero" class="nav-link scrollto"><i class="bx bx-category"></i> <span>Hero</span></a>
+            </li>
+            <li class="extra-links">
+              <a href="#skills" class="nav-link scrollto"><i class="bx bx-category"></i> <span>Skills</span></a>
+            </li>
+            <li class="extra-links">
+              <a href="#mailbox" class="nav-link scrollto"><i class="bx bx-category"></i> <span>Mailbox</span></a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+    {% include 'hero.html' %}
+    {% include 'about.html' %}
+    {% include 'skills.html' %}
+    {% include 'portfolio.html' %}
+    {% include 'services.html' %}
+    {% include 'testimonials.html' %}
+    {% include 'contact.html' %}
+  </main>
+  {% include 'footer.html' %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const logInBtn = document.getElementById('login-btn');
+      const isLoggedIn = logInBtn.classList.contains('logged-in');
+
+      logInBtn.addEventListener('click', function () {
+        // Inverse l'état de connexion
+        const newLoggedInState = !isLoggedIn;
+        // Met à jour le texte du bouton
+        logInBtn.querySelector('span').textContent = newLoggedInState ? 'Log Out' : 'Log In';
+        // Ajoute ou supprime la classe logged-in
+        logInBtn.classList.toggle('logged-in', newLoggedInState);
+        // Met à jour l'état de connexion
+        isLoggedIn = newLoggedInState;
+
+        // Tu peux envoyer une requête AJAX ici pour mettre à jour le backend avec l'état de connexion
+        // Exemple d'utilisation de fetch :
+        fetch('/update_login_status/', {
+           method: 'POST',
+           body: JSON.stringify({ isLoggedIn: newLoggedInState }),
+           headers: {
+             'Content-Type': 'application/json'
+           }
+         }).then(response => {
+           if (response.ok) {
+             console.log('Login status updated successfully');
+           } else {
+             console.error('Failed to update login status');
+           }
+         }).catch(error => {
+           console.error('Error updating login status:', error);
+         });
+      });
+    });
+  </script>
+{% endblock %}
+ {% endcomment %}
+
+
+
+
+{% comment %} {% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<header id="header">
+  <div class="d-flex flex-column">
+
+    <div class="profile">
+      <img id="profile-img" src="{% static 'profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
+      <h1 class="text-light" id="username"><a href="index.html">Alex Smith</a></h1>
+      <div id="social-links" class="social-links mt-3 text-center">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+
+    <nav id="navbar" class="nav-menu navbar">
+      <ul>
+        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+        <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+
+        <li id="login-btn-li"><a href="#" id="login-btn" class="nav-link scrollto"><i class="bx bx-log-in"></i> <span>Log In</span></a></li>
+        <li class="extra-links" style="display: none;"><a href="#hero" class="nav-link scrollto"><i class="bx bx-category"></i> <span>Hero</span></a></li>
+        <li class="extra-links" style="display: none;"><a href="#skills" class="nav-link scrollto"><i class="bx bx-category"></i> <span>Skills</span></a></li>
+        <li class="extra-links" style="display: none;"><a href="#mailbox" class="nav-link scrollto"><i class="bx bx-category"></i> <span>Mailbox</span></a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+

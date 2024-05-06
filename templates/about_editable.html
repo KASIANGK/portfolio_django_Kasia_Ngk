@@ -1,0 +1,180 @@
+{% load static %}
+
+{% block content %}
+<section id="about" class="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>About</h2>
+        </div>
+        <div class="row">
+            {% if data_saved %}
+                <p>OH YEAH BG, DATA SAVED SUCCESSFULLY !</p>
+            {% endif %}
+            <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+
+                <form id="about-form" method="post" action="{% url 'update_about' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="profile_image" class="form-label">Profile Image</label>
+                        <input type="file" class="form-control" id="profile_image" name="profile_image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" value="{{ about_instance.description }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Birthday</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{ about_instance.birthday }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="website" class="form-label">Website</label>
+                        <input type="url" class="form-control" id="website" name="website" value="{{ about_instance.website }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="{{ about_instance.phone }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="city" name="city" value="{{ about_instance.city }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" value="{{ about_instance.age }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="degree" class="form-label">Degree</label>
+                        <input type="text" class="form-control" id="degree" name="degree" value="{{ about_instance.degree }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ about_instance.email }}">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="freelance" name="freelance" {% if about_instance.freelance_available %}checked{% endif %}>
+                        <label class="form-check-label" for="freelance">Freelance</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#about-form').submit(function(event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: formData,
+                success: function(response) {
+                    alert('OH YEAH BG, DATA SAVED SUCCESSFULLY !');
+                },
+                error: function() {
+                    alert('Oh noooo, an error occurred while submitting the form :( ');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+
+
+
+
+{% comment %} {% load static %}
+{% block content %}
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>About</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4" data-aos="fade-right">
+                <img src="{% static 'profile-img.jpg' %}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+
+                <form id="about-form" method="post" action="{% url 'update_about' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Birthday</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{ about_instance.birthday }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="website" class="form-label">Website</label>
+                        <input type="url" class="form-control" id="website" name="website" value="{{ about_instance.website }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="url" class="form-control" id="phone" name="phone" value="{{ about_instance.phone }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="url" class="form-control" id="city" name="city" value="{{ about_instance.city }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="url" class="form-control" id="age" name="age" value="{{ about_instance.age }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="degree" class="form-label">Degree</label>
+                        <input type="url" class="form-control" id="degree" name="degree" value="{{ about_instance.degree }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="url" class="form-control" id="email" name="email" value="{{ about_instance.email }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="freelance" class="form-label">Freelance</label>
+                        <input type="freelance" class="form-control" id="freelanceity" name="freelance" value="{{ about_instance.freelance_available }}">
+                    </div>
+                    <!-- Ajoutez d'autres champs ici -->
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Code JavaScript pour la soumission AJAX -->
+<script>
+    $(document).ready(function() {
+        // Lorsque le formulaire est soumis
+        $('#about-form').submit(function(event) {
+            // Empêcher le comportement par défaut du formulaire
+            event.preventDefault();
+            
+            // Récupérer les données du formulaire
+            var formData = $(this).serialize();
+            
+            // Effectuer une requête AJAX pour soumettre le formulaire
+            $.ajax({
+                url: $(this).attr('action'), // Récupérer l'URL d'action du formulaire
+                type: $(this).attr('method'), // Récupérer la méthode du formulaire (POST)
+                data: formData, // Utiliser les données du formulaire
+                success: function(response) {
+                    // Traiter la réponse de la requête AJAX (par exemple, afficher un message de succès)
+                    alert('Formulaire soumis avec succès !');
+                },
+                error: function() {
+                    // Traiter les erreurs de la requête AJAX (par exemple, afficher un message d'erreur)
+                    alert('Une erreur s\'est produite lors de la soumission du formulaire.');
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %} {% endcomment %}

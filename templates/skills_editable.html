@@ -1,0 +1,117 @@
+{% load static %}
+
+{% block content %}
+<section id="skills" class="skills section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Skills</h2>
+        </div>
+
+        <div class="row skills-content">
+            <div class="col-lg-6" data-aos="fade-up">
+                <form id="skills-form" method="post" action="{% url 'update_skills' %}">
+                    {% csrf_token %}
+                    {% comment %} {% for skill in skills %} {% endcomment %}
+                    <div class="progress">
+                        <span class="skill">
+                            <input type="text" class="form-control" name="name_{{ skill.id }}" value="{{ skill.name }}" placeholder="Enter skill name...">
+                            <input type="range" class="form-range" name="level_{{ skill.id }}" min="0" max="100" value="{{ skill.level }}" placeholder="Enter skill level...">
+                        </span>
+                        {% comment %} <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> {% endcomment %}
+                    </div>
+                    {% comment %} {% endfor %} {% endcomment %}
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <div class="row skills-content">
+            <div class="col-lg-6" data-aos="fade-up">
+
+                <div class="progress">
+                    <span class="skill">HTML <i class="val">100%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <span class="skill">CSS <i class="val">90%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <span class="skill">JavaScript <i class="val">75%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="progress">
+                    <span class="skill">PHP <i class="val">80%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <span class="skill">WordPress/CMS <i class="val">90%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <span class="skill">Photoshop <i class="val">55%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#skills-form').submit(function(event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            console.log(formData); 
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: formData,
+                success: function(response) {
+                    alert('BANG BANG, skill saved successfully!');
+                },
+                error: function() {
+                    alert('Error saving skills!');
+                }
+            });
+        });
+
+        // MAJ la barre de progression lorsqu'une nouvelle valeur dans le range
+        //$('input[type="range"]').change(function() {
+            //var newValue = $(this).val();
+            //var progressBar = $(this).closest('.progress').find('.progress-bar');
+            //progressBar.css('width', newValue + '%').attr('aria-valuenow', newValue);
+            //progressBar.text(newValue + '%');
+        //});
+    });
+</script>
+{% endblock %}
+

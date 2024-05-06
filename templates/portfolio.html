@@ -1,0 +1,347 @@
+{% load static %}
+
+{% block content %}
+
+    <section id="portfolio" class="portfolio section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Portfolio</h2>
+                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
+
+            <div class="row" data-aos="fade-up">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-app">App</li>
+                        <li data-filter=".filter-card">Card</li>
+                        <li data-filter=".filter-web">Web</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-1.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-2.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-3.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-3.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-5.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-5.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-6.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-6.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img src="{% static 'portfolio/portfolio-9.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-links">
+                  <a href="{% static 'portfolio/portfolio-9.jpg' %}"data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                {% comment %} {% for item in portfolio_items %} {% endcomment %}
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{ item.filter }}">
+                    <div class="portfolio-wrap">
+                        <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}">
+                        <div class="portfolio-links">
+                            <a href="{{ item.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ item.title }}"><i class="bx bx-plus"></i></a>
+                            <a href="{% url 'portfolio_details'%}" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} {% endfor %} {% endcomment %}
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#portfolioForm').submit(function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                console.log(formData); 
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        alert('L\'image a été sauvegardée avec succès!');
+                        $('#portfolioForm')[0].reset();
+
+                        var filterValue = $('#filter').val().toLowerCase();
+                        var imageURL = response.image_url; 
+                        var $newImage = $('<img>').attr('src', imageURL).addClass('img-fluid').addClass('portfolio-item').addClass('filter-' + filterValue);
+                        var $newPortfolioItem = $('<div>').addClass('col-lg-4').addClass('col-md-6').addClass('portfolio-item').addClass('filter-' + filterValue).append($newImage);
+                        $('.portfolio-container').append($newPortfolioItem);
+                    },
+                    error: function() {
+                        alert('Erreur lors de la sauvegarde de l\'image!');
+                    }
+                });
+            });
+
+            $('#portfolio-flters li').click(function() {
+                var filter = $(this).attr('data-filter');
+                if (filter == 'all') {
+                    $('.portfolio-item').show();
+                } else {
+                    $('.portfolio-item').hide();
+                    $('.portfolio-item').filter(filter).show();
+                }
+                $('#portfolio-flters li').removeClass('filter-active');
+                $(this).addClass('filter-active');
+            });
+        });
+    </script>
+{% endblock %}
+
+{% comment %} {% load static %}
+
+
+{% block content %}
+
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-1.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+                  <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-2.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-3.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-3.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-5.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-5.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-6.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-6.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="{% static 'portfolio/portfolio-9.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="{% static 'portfolio/portfolio-9.jpg' %}"data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-lg-4 col-md-6 portfolio-item {{ item.filter }}">
+                  <div class="portfolio-wrap">
+                      <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}">
+                      <div class="portfolio-links">
+                          <a href="{{ item.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ item.title }}"><i class="bx bx-plus"></i></a>
+                          <a href="{% url 'portfolio_details' %}"  title="More Details"><i class="bx bx-link"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#portfolioForm').submit(function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                console.log(formData); 
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        alert('L\'image a été sauvegardée avec succès!');
+                        $('#portfolioForm')[0].reset();
+                        // Ajout de la classe de filtre à l'image
+                        var filterValue = $('#filter').val().toLowerCase();
+                        var imageURL = 'chemin/vers/l/image'; 
+                        var $newImage = $('<img>').attr('src', imageURL).addClass('portfolio-item').addClass('filter-' + filterValue);
+                        $('.portfolio-container').append($newImage);
+                    },
+                    error: function() {
+                        alert('Erreur lors de la sauvegarde de l\'image!');
+                    }
+                });
+            });
+
+            $('#portfolio-flters li').click(function() {
+                var filter = $(this).attr('data-filter');
+                if (filter == 'all') {
+                    $('.portfolio-item').show();
+                } else {
+                    $('.portfolio-item').hide();
+                    $('.portfolio-item').filter(filter).show();
+                }
+                $('#portfolio-flters li').removeClass('filter-active');
+                $(this).addClass('filter-active');
+            });
+        });
+    </script>
+{% endblock %}
+ {% endcomment %}

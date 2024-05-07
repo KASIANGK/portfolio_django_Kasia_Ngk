@@ -40,33 +40,20 @@
             </div>
         </section>
 
-
-        {% include 'about_editable.html' %}
-
+        {% include 'back_info_about.html' %}
 
 
-        {% include 'skills_editable.html' %}
+        {% include 'back_skills.html' %}
+   
 
+        {% include 'back_portfolio.html' %}
+
+
+        {% include 'back_services.html' %}
+
+
+        {% include 'back_testimonial.html' %}
         
-
-        {% include 'add_portfolio_item.html' %}
-
-
-
-        {% include 'services_editable.html' %}
-        <section id="testimonials" class="testimonials section-bg">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Testimonials</h2>
-                </div>
-                <form id="testimonialForm" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Ajouter</button>
-                </form>
-            </div>
-        </section>
-
-        {% include 'add_testimonial.html' %}
 
         {% include 'contact.html' %} 
 

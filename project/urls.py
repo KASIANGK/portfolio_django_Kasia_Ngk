@@ -46,11 +46,11 @@ urlpatterns = [
     path('logout/', about_views.logout_view, name='logout'),  
     path('profile/', about_views.profile, name='profile'),
     path('login/', about_views.login, name='login'),  
-    path('homeback/', about_views.homeback, name="homeback"),
+    path('backhome/', about_views.homeback, name="backhome"),
     path('update_skills/', skills_views.update_skills, name='update_skills'), 
-    path('add_portfolio_item/', portfolio_views.add_portfolio_item, name='add_portfolio_item'),
+    path('back_portfolio/', portfolio_views.add_portfolio_item, name='back_portfolio'),
     # path('homeback/testimonials/', add_testimonial_views.add_testimonial, name='add_testimonial'), 
-    path('modify/', modify_service_views.modify_services, name='modify_services'),  
+    # path('backhome', modify_service_views.modify_services, name='modify_services'),  
     path('service/', modify_service_views.service, name='service'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

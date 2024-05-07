@@ -11,7 +11,7 @@ def add_portfolio_item(request):
     else:
         form = PortfolioForm()
     
-    return render(request, 'add_portfolio_item.html', {'form': form})
+    return render(request, 'portfolio.html', {'form': form})
 
 def home(request):
     portfolio_item = PortfolioItem.objects.all()

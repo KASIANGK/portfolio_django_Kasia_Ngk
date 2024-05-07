@@ -16,7 +16,7 @@ def update_skills(request):
     else:
         form = AddSkillForm()
 
-    return render(request, 'skills_editable.html', {'form': form, 'skills': skills, 'data_saved': data_saved,})
+    return render(request, 'back_skills.html', {'form': form, 'skills': skills, 'data_saved': data_saved,})
 
 
 

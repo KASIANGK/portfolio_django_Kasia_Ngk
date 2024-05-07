@@ -10,16 +10,16 @@ def service(request):
 
 
 
-def modify_services(request):
-    data_saved = False
-    serviceform = Service.objects.all()
+# def modify_services(request):
+#     data_saved = False
+#     serviceform = Service.objects.all()
     
-    if request.method == 'POST':
-        form = ServiceForm(request.POST)  
-        if form.is_valid():
-            form.save()
-            return redirect('homeback')  
-    else:
-        form = ServiceForm()
+#     if request.method == 'POST':
+#         form = ServiceForm(request.POST)  
+#         if form.is_valid():
+#             form.save()
+#             return redirect('backhome')  
+#     else:
+#         form = ServiceForm()
     
-    return render(request, 'services_editable.html', {'form': form, 'data_saved': data_saved, 'serviceform':serviceform})
+#     return render(request, 'back_services.html', {'form': form, 'data_saved': data_saved, 'serviceform':serviceform})

@@ -26,7 +26,17 @@ def portfolio_details(request):
 
 def about(request):
     about_info = AboutInfo.objects.first()
-    return render(request, 'about.html', {'about_info': about_info})
+    return render(request, 'info_about.html', {'about_info': about_info})
+
+
+# def home(request):
+#     about_info = AboutInfo.objects.first()  
+#     testimonials = Testimonial.objects.all() 
+#     skills = Skill.objects.all() 
+#     services = Service.objects.all() 
+#     context = locals()
+
+#     return render(request, 'home.html', context)
 
 
 def home(request):
@@ -34,25 +44,14 @@ def home(request):
     testimonials = Testimonial.objects.all() 
     skills = Skill.objects.all() 
     services = Service.objects.all() 
-    context = locals()
-
+    context = {
+        'about_info': about_info,
+        'testimonials': testimonials,
+        'skills': skills,
+        'services': services,
+    }
     return render(request, 'home.html', context)
 
-# def home(request):
-#     about_info = AboutInfo.objects.first()  
-#     testimonials = Testimonial.objects.all() 
-#     skills = Skill.objects.all() 
-#     services = Service.objects.all() 
-#     context = {
-#         'about_info': about_info,  
-#         'testimonials': testimonials,
-#         'skills': skills,  
-#         'isLoggedIn': request.user.is_authenticated,
-#         'services': services
-#     }
-#     print("Testimonials:", testimonials)  
-
-#     return render(request, 'home.html', context)
 
 
 
@@ -65,7 +64,7 @@ def homeback(request):
         if form.is_valid():
             form.save()
             data_saved = True 
-            return redirect('homeback')  # Rediriger vers la même page après avoir ajouté un témoignage
+            return redirect('backhome') 
     else:
         form = TestimonialForm()
     
@@ -75,12 +74,34 @@ def homeback(request):
         'x': x,
         'isLoggedIn': request.user.is_authenticated
     }
-    return render(request, 'homeback.html', context)
-# def homeback(request):
-#     context = {
-#         'isLoggedIn': request.user.is_authenticated
-#     }
-#     return render(request, 'homeback.html', context)
+    return render(request, 'back_home.html', context)
+
+
+
+
+
+def modify_services(request):
+    data_saved = False
+    serviceform = Service.objects.all()
+    
+    if request.method == 'POST':
+        form = ServiceForm(request.POST)  
+        if form.is_valid():
+            form.save()
+            return redirect('backhome')  
+    else:
+        form = ServiceForm()
+
+    context = {
+        'form': form,
+    }
+    
+    return render(request, 'back_services.html', {'form': form, 'data_saved': data_saved, 'serviceform':serviceform})
+
+
+
+
+
 
 def login(request):
     if request.method == 'POST':
@@ -106,9 +127,6 @@ def logout_view(request):
 
 
 
-
-
-
 def update_about(request):
     about_instance = AboutInfo.objects.first()
     data_saved = False
@@ -118,11 +136,11 @@ def update_about(request):
         if form.is_valid():
             form.save()
             data_saved = True
-            return redirect('homeback')  
+            return redirect('backhome')  
     else:
         form = AboutInfoForm(instance=about_instance)
     
-    return render(request, 'about_editable.html', {'form': form, 'data_saved': data_saved})
+    return render(request, 'back_info_about.html', {'form': form, 'data_saved': data_saved})
 
 
 
@@ -152,16 +170,3 @@ def service(request):
 
 
 
-def modify_services(request):
-    data_saved = False
-    serviceform = Service.objects.all()
-    
-    if request.method == 'POST':
-        form = ServiceForm(request.POST)  
-        if form.is_valid():
-            form.save()
-            return redirect('homeback')  
-    else:
-        form = ServiceForm()
-    
-    return render(request, 'services_editable.html', {'form': form, 'data_saved': data_saved, 'serviceform':serviceform})

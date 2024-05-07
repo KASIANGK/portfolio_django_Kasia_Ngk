@@ -5,7 +5,7 @@ class Testimonial(models.Model):
     content = models.TextField()  
     author = models.CharField(max_length=100)  
     designation = models.CharField(max_length=100)  
-    image = models.ImageField(upload_to='galerie/', null=True, blank=True) 
+    image = models.ImageField(upload_to='galerie/', default='default_profile.jpg')
 
     def __str__(self):
         return self.author + ' - ' + self.designation

@@ -45,11 +45,7 @@
             </div>
         </section>
 
-        {% if request.user.is_authenticated %}
-            {% include 'about_editable.html' %}
-        {% else %}
-            {% include 'about.html' %}
-        {% endif %}
+        {% include 'info_about.html' %}
 
         {% include 'skills.html' %}
 
@@ -58,6 +54,7 @@
         {% include 'services.html' %}
         
         {% include 'testimonials.html' %}
+        
         {% include 'contact.html' %}
     </main>
 
